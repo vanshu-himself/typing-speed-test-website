@@ -4,6 +4,7 @@ import  Select from "react-select";
 import { themeOptions } from "../Utils/themeOption";
 import { useTheme } from "../Context/ThemeContext";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedinIcon from '@mui/icons-material/LinkedIn';
 const Footer = ()=>{
 // const [value,setValue]=useState();
 const {setTheme,theme}=useTheme();
@@ -18,6 +19,8 @@ const handleChange = (e)=>{
         <div className="footer">
 <div className="links">
     <a href="https://github.com/vanshu-himself" style={{color:theme.color}}>{<GitHubIcon/>}</a>
+    <a href="www.linkedin.com/in/vansh-gupta-6666aa1a7" style={{color:theme.color}}>{<LinkedinIcon/>}</a>
+
 </div>
 <div className="themeButton">
     

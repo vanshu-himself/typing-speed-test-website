@@ -58,6 +58,7 @@ const TypingBox = () => {
             })
         }
     }
+
     const resetTest = () => {
         clearInterval(intervalId);
         setCountDown(testTime);
@@ -69,6 +70,22 @@ const TypingBox = () => {
         focusInput();
         resetWordsSpanRefClassname();
     }
+    function resetAfterTest() {
+        clearInterval(intervalId);
+        setCountDown(testTime);
+        setCurrWordIndex(0);
+        setCurrCharIndex(0);
+        setTestStart(false);
+        setTestEnd(false);
+        setGraphData([]);
+        setCorrectChars(0);
+        setCorrectWords(0);
+        setMissedChars(0);
+        setExtraChars(0);
+        setIncorrectChars(0);
+        setWordsArray(generate(50));
+        focusInput();
+      }
     const resetWordsSpanRefClassname = () => {
         wordsSpanRef.map(i => {
             Array.from(i.current.childNodes).map(j => {
@@ -161,21 +178,25 @@ const TypingBox = () => {
         setCurrCharIndex(currCharIndex + 1);
     }
     const calculateWPM = () => {
-        return Math.round(((correctChars / 5) / (testTime / 60)));
+        return Math.round(correctChars / 5 / (testTime / 60));
     }
     const calculateAcc = () => {
         // console.log(correctWords)
         // console.log(currWordIndex)
-        return (Math.round(correctWords / currWordIndex)*100);
+        if(!correctWords)return 0;
+        return Math.round((correctWords / currWordIndex)*100);
         
        
     }
     const focusInput = () => {
         inputRef.current.focus()
     }
+    function resetTest2() {
+        return testEnd ? resetAfterTest() : resetTest();
+      }
     useEffect(() => {
         // setCountDown(testTime)
-        resetTest();
+        resetTest2();
     }, [testTime])
     useEffect(() => {
         focusInput();
@@ -191,7 +212,8 @@ const TypingBox = () => {
              incorrectChars={incorrectChars} 
              missedChars={missedChars}
              extraChars={extraChars}
-             graphData={graphData}/> : (
+             graphData={graphData}
+             resetTest={resetTest2}/> : (
                 <div className="type-box" onClick={focusInput}>
                     <div className="words">
                         {

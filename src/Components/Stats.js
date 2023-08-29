@@ -3,17 +3,22 @@ import Graph from "./Graph";
 import { auth } from "../FirebaseConfig";
 import { toast } from "react-toastify";
 import { db } from "../FirebaseConfig";
-const Stats = (
+import { useNavigate } from "react-router-dom";
+import TypingBox from "./TypingBox";
 
+
+const Stats = (
+   
    { wpm,
     accuracy,
     correctChars,
     incorrectChars,
     missedChars,
     extraChars,
-    graphData}
+    graphData,
+resetTest}
 )=>{
-  
+    let navigate=useNavigate();
     let timeSet=new Set();
     const newGraph = graphData.filter(i=>{
         if(!timeSet.has(i[0])){
@@ -22,7 +27,7 @@ const Stats = (
         }
     })
 const pushDatatoDB = ()=>{
-    if(isNaN(accuracy)){
+    if(isNaN(accuracy) || (!accuracy)){
         toast.error('invalid test', {
             position: "top-right",
             autoClose: 5000,
@@ -102,7 +107,7 @@ useEffect(()=>{
    <div className="title">Characters</div>
    <div className="subtitle">{correctChars}/{incorrectChars}/{missedChars}/{extraChars}</div>
 
-  
+  <button className="restart-btn" style={{ cursor: "pointer" }} onClick={resetTest} >Restart</button>
 
 
 </div>

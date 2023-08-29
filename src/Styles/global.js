@@ -183,4 +183,13 @@ body{
     margin:auto;
     width:600px;
 }
+.restart-btn{
+    margin-top:30px;
+    padding:10px 50px;
+    background:${({theme})=>theme.color};
+    color:${({theme})=>theme.background};
+    border:none;
+    border-radius:5px;
+    
+}
 `
