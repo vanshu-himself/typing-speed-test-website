@@ -19,8 +19,8 @@ const handleChange = (e)=>{
         <div className="footer">
 <div className="links">
     <a href="https://github.com/vanshu-himself" style={{color:theme.color}}>{<GitHubIcon/>}</a>
-    <a href="www.linkedin.com/in/vansh-gupta-6666aa1a7" style={{color:theme.color}}>{<LinkedinIcon/>}</a>
-
+    <a href="https:/www.linkedin.com/in/vansh-gupta-6666aa1a7" style={{color:theme.color}}>{<LinkedinIcon/>}</a>
+   
 </div>
 <div className="themeButton">
     
