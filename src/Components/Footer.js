@@ -5,6 +5,8 @@ import { themeOptions } from "../Utils/themeOption";
 import { useTheme } from "../Context/ThemeContext";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedinIcon from '@mui/icons-material/LinkedIn';
+import { Link } from "react-router-dom";
+
 const Footer = ()=>{
 // const [value,setValue]=useState();
 const {setTheme,theme}=useTheme();
@@ -18,9 +20,12 @@ const handleChange = (e)=>{
     return(
         <div className="footer">
 <div className="links">
-    <a href="https://github.com/vanshu-himself" style={{color:theme.color}}>{<GitHubIcon/>}</a>
-    <a href="https:/www.linkedin.com/in/vansh-gupta-6666aa1a7" style={{color:theme.color}}>{<LinkedinIcon/>}</a>
+    <Link to="https://github.com/vanshu-himself"  target="_blank" style={{color:theme.color}}>{<GitHubIcon/>}</Link>
+    <Link to="https://www.linkedin.com/in/vansh-gupta-6666aa1a7"  target="_blank" style={{color:theme.color}}>{<LinkedinIcon/>}</Link>
    
+  
+
+
 </div>
 <div className="themeButton">
     
